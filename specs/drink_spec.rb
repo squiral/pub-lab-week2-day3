@@ -15,6 +15,11 @@ def test_drink_has_name
   assert_equal("Old Fashioned", @drink1.name)
 end
 
+def test_drink_has_price
+  assert_equal(4, @drink1.price)
+end
+
+
 
 
 end
