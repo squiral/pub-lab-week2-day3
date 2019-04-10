@@ -1,0 +1,16 @@
+pub {
+  name
+  till
+  drinks[ {stock => 100,
+          {name of drink
+           price
+           alcohol
+          }},
+
+          {stock => 100,
+                  {name of drink
+                   price
+                   alcohol
+                  }}
+          ]
+}

@@ -55,6 +55,9 @@ class TestPub < MiniTest::Test
     assert_equal(true, @pub.too_drunk(@customer))
   end
 
+  def test_inventory
+    assert_equal(80, @pub.inventory(@drink1))
+  end
 
 
 
