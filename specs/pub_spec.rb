@@ -7,6 +7,10 @@ require_relative('../drink.rb')
 class TestPub < MiniTest::Test
 
   def setup
+    @drink1 = Drink.new("Old Fashioned", 4)
+    @drink2 = Drink.new("Kopparberg", 5)
+    @drink3 = Drink.new("Pinot Grigio", 6)
+
     @pub = Pub.new("CiderClan")
   end
 
@@ -22,7 +26,11 @@ class TestPub < MiniTest::Test
     assert_equal(0, @pub.drinks.length)
   end
 
-
+  def test_deliver_drink_to_pub
+    @pub.drinks = [@drink1, @drink2, @drink3]
+    assert_equal(3, @pub.drinks.length)
+  end
+  
 
 
 
