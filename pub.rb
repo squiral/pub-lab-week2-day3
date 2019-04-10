@@ -1,10 +1,13 @@
 class Pub
 
-def initialize
-  @name = name
-  @till = 0
-  @drinks = []
-end
+  attr_reader :name
+  attr_accessor :till, :drinks
+
+  def initialize(name)
+    @name = name
+    @till = 0
+    @drinks = []
+  end
 
 
 
