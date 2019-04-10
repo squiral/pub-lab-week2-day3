@@ -11,7 +11,7 @@ class Pub
 
   def supply_drink(drink)
     index = @drinks.index(drink)
-    @drinks.slice!(index, 1)
+    return @drinks.delete_at(index)
   end
 
 
