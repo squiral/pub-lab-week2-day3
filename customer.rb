@@ -12,10 +12,14 @@ class Customer
   end
 
   def pay_for_drink(drink, pub, customer)
-    pub.of_age(customer)
-    @wallet -= drink.price
-    pub.take_money(drink)
-    drink.add_alcohol(customer)
+    if pub.too_drunk(customer)
+
+    else
+      pub.of_age(customer)
+      @wallet -= drink.price
+      pub.take_money(drink)
+      drink.add_alcohol(customer)
+    end
   end
 
 
