@@ -12,7 +12,9 @@ class TestCustomer < MiniTest::Test
 
     @pub = Pub.new("CiderClan")
 
-    @customer = Customer.new("Alison", 50)
+    @customer = Customer.new("Alison", 50, 25)
+    @customer2 = Customer.new("Jimmy", 20, 16)
+
   end
 
   def test_alison_exists
@@ -25,12 +27,21 @@ class TestCustomer < MiniTest::Test
 
   def test_pay_for_drink
     @pub.drinks = [@drink3]
-    @customer.pay_for_drink(@drink3, @pub)
+    @customer.pay_for_drink(@drink3, @pub, @customer)
     assert_equal(44, @customer.wallet)
-    assert_equal(6, @pub.till)
   end
 
+  def test_pay_for_drink__of_age
+    @pub.drinks = [@drink3]
+    @customer.pay_for_drink(@drink3, @pub, @customer)
+    assert_equal(44, @customer.wallet)
+  end
 
-
+  def test_pay_for_drink__underage
+    @pub.drinks = [@drink3]
+    @customer.pay_for_drink(@drink3, @pub, @customer2)
+    assert_equal(20, @customer2.wallet)
+  end
+  
 
 end
