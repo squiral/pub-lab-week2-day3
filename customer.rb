@@ -22,6 +22,16 @@ class Customer
     end
   end
 
+  def buy_and_consume_food(food, pub, customer)
+      @wallet -= food.price
+      pub.take_money(food)
+      food.rejuvenate_customer(customer)
+  end
+
+
+
+
+
 
 
 end

@@ -14,8 +14,8 @@ class Pub
     return @drinks.delete_at(index)
   end
 
-  def take_money(drink)
-    @till += drink.price
+  def take_money(item)
+    @till += item.price
   end
 
   def of_age(customer)
