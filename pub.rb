@@ -22,5 +22,10 @@ class Pub
     customer.age >= 18 ? true : false
   end
 
+  def too_drunk(customer)
+    customer.inebriation >= 7 ? true : false
+  end
+
+
 
 end

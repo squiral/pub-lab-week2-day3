@@ -8,14 +8,14 @@ require_relative('../customer.rb')
 class TestPub < MiniTest::Test
 
   def setup
-    @drink1 = Drink.new("Old Fashioned", 4)
-    @drink2 = Drink.new("Kopparberg", 5)
-    @drink3 = Drink.new("Pinot Grigio", 6)
+    @drink1 = Drink.new("Old Fashioned", 4, 2)
+    @drink2 = Drink.new("Kopparberg", 5, 1)
+    @drink3 = Drink.new("Pinot Grigio", 6, 3)
 
     @pub = Pub.new("CiderClan")
     @pub.drinks = [@drink1, @drink2, @drink3]
 
-    @customer = Customer.new("Alison", 50, 25)
+    @customer = Customer.new("Alison", 50, 25, 9)
     @customer2 = Customer.new("Jimmy", 20, 16)
 
   end
@@ -50,6 +50,9 @@ class TestPub < MiniTest::Test
     assert_equal(6, @pub.till)
   end
 
+  def test_too_drunk
+    assert_equal(true, @pub.too_drunk(@customer))
+  end
 
 
 

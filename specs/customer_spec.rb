@@ -8,7 +8,8 @@ require_relative('../customer.rb')
 class TestCustomer < MiniTest::Test
 
   def setup
-    @drink3 = Drink.new("Pinot Grigio", 6)
+    @drink3 = Drink.new("Pinot Grigio", 6, 3)
+    @drink1 = Drink.new("Old Fashioned", 4, 2)
 
     @pub = Pub.new("CiderClan")
 
@@ -42,6 +43,27 @@ class TestCustomer < MiniTest::Test
     @customer.pay_for_drink(@drink3, @pub, @customer2)
     assert_equal(20, @customer2.wallet)
   end
-  
+
+  def test_pay_for_drink__gets_you_drunk
+    @pub.drinks = [@drink3]
+    @customer.pay_for_drink(@drink3, @pub, @customer)
+    assert_equal(3, @customer.inebriation)
+  end
+
+  def test_pay_for_drink__multiple
+    @pub.drinks = [@drink3]
+    @customer.pay_for_drink(@drink3, @pub, @customer)
+    @customer.pay_for_drink(@drink3, @pub, @customer)
+    assert_equal(6, @customer.inebriation)
+  end
+
+  def test_pay_for_drink__too_drunk
+    @customer.pay_for_drink(@drink3, @pub, @customer)
+    @customer.pay_for_drink(@drink3, @pub, @customer)
+    @customer.pay_for_drink(@drink1, @pub, @customer)
+    @customer.pay_for_drink(@drink1, @pub, @customer)
+    assert_equal(8, @customer.inebriation)
+  end
+
 
 end
