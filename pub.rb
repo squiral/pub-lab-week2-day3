@@ -9,7 +9,10 @@ class Pub
     @drinks = []
   end
 
-
+  def supply_drink(drink)
+    index = @drinks.index(drink)
+    @drinks.slice!(index, 1)
+  end
 
 
 
